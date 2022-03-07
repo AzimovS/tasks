@@ -1,0 +1,21 @@
+body {
+  background: #13795b;
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+
+
+.container {
+  height: 300px;
+  margin: 100px auto;
+  max-width: 500px;
+  background: #fff;
+  border-radius: 0.25rem;
+  padding: 1rem 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+.container h3 {
+  font-weight: normal;
+  text-transform: none;
+  margin-bottom: 2rem;
+}
