@@ -5,3 +5,11 @@ export interface Movie {
   duration: number;
   image: string;
 }
+
+export interface Actor {
+  id: number;
+  name: string;
+  movies: string;
+  age: number;
+  image: string;
+}
