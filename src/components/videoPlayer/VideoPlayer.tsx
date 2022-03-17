@@ -23,7 +23,7 @@ const VideoPlayer: React.FC<Props> = ({ url, onClose, replaceImage }) => {
     <StyledVideoWrapper>
       <button onClick={onClose}>Close</button>
       {!replaceImage && <ReactPlayer url={url}/>}
-      {replaceImage && (<ReactPlayer url={url} width={"200px"} height={"200px"}/>)}
+      {replaceImage && (<ReactPlayer url={url} width={"200px"} height={"200px"} playing={true}/>)}
     </StyledVideoWrapper>
   )
 }
