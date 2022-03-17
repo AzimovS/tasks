@@ -1,0 +1,14 @@
+.MainPage {
+  background-color: #fff;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .header {
+    font-size: 1.75rem;
+  }
+}
+

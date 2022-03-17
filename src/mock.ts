@@ -8,6 +8,7 @@ export const movies: Movie[] = [
     description: 'asd',
     duration: 120,
     image: 'https://m.media-amazon.com/images/M/MV5BOGE2NWUwMDItMjA4Yi00N2Y3LWJjMzEtMDJjZTMzZTdlZGE5XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg',
+    trailer: 'https://www.youtube.com/watch?v=AJmEaYsLYB8'
   },
   {
     id: 2,
@@ -15,6 +16,7 @@ export const movies: Movie[] = [
     description: 'asd',
     duration: 90,
     image: 'https://cdn.mos.cms.futurecdn.net/y2FXvdPpK8WBj79PivRUgk.jpg',
+    trailer: 'https://www.youtube.com/watch?v=TkljLNwvpMU'
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export const movies: Movie[] = [
     description: 'asd',
     duration: 120,
     image: 'https://i.pinimg.com/originals/9a/40/fb/9a40fb057274e64f13866cee3dea53db.jpg',
+    trailer: 'https://www.youtube.com/watch?v=W56UKCwT2LM'
   },
 ];
 
