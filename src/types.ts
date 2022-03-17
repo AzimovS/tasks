@@ -14,4 +14,5 @@ export interface Actor {
   movies: string;
   age: number;
   image: string;
+  video: string;
 }

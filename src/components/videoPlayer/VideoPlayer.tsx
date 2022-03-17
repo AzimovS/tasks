@@ -9,9 +9,10 @@ const StyledVideoWrapper = styled.div`
 type Props = {
   url: string;
   onClose?: () => void;
+  replaceImage?: boolean;
 }
 
-const VideoPlayer: React.FC<Props> = ({ url, onClose }) => {
+const VideoPlayer: React.FC<Props> = ({ url, onClose, replaceImage }) => {
   const closeHandler = () => {
     if (onClose) {
       onClose();
@@ -21,7 +22,8 @@ const VideoPlayer: React.FC<Props> = ({ url, onClose }) => {
   return (
     <StyledVideoWrapper>
       <button onClick={onClose}>Close</button>
-      <ReactPlayer url={url} />
+      {!replaceImage && <ReactPlayer url={url}/>}
+      {replaceImage && (<ReactPlayer url={url} width={"200px"} height={"200px"}/>)}
     </StyledVideoWrapper>
   )
 }

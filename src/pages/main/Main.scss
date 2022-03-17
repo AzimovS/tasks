@@ -1,4 +1,4 @@
-.MainPage {
+.MoviePage {
   background-color: #fff;
   width: 100%;
   border-radius: 5px;
@@ -9,6 +9,21 @@
 
   .header {
     font-size: 1.75rem;
+  }
+}
+
+.ActorPage {
+  margin-top: 10px;
+  background-color: #c7ced9;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .header {
+    font-size: 2rem;
   }
 }
 
