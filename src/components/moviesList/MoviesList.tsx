@@ -10,7 +10,7 @@ type Props = {
   onMovieClick: (v: Movie) => void;
 };
 
-const MoviesList: React.FC<Props> = ({ movies, selectedId, onMovieClick }) => {
+const MoviesList: React.FC<Props> = ({ movies, onMovieClick }) => {
   const selectedMovie = useContext(SelectedMovieContext);
 
   return (
