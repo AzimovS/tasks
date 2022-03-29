@@ -7,9 +7,18 @@ import { Movie, Actor } from "../../types";
 import "./Main.scss";
 import VideoPlayer from "../../components/videoPlayer/VideoPlayer";
 
+
+export type selectedMovieContext = {
+  selectedMovie: Movie | null;
+};
+
+export const SelectedMovieContext = React.createContext<selectedMovieContext | -1>(-1);
+
+
 const Main = () => {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [selectedActor, setSelectedActor] = useState<Actor | null>(null);
+
 
   const movieClickHandler = (v: Movie) => {
     setSelectedMovie(v);
@@ -27,15 +36,17 @@ const Main = () => {
     setSelectedActor(null);
   };
 
+
   return (
     <div className="MainPage">
       <div className="MoviePage">
         <h2 className="header">Movies ({movies.length})</h2>
-        <MoviesList
-          selectedId={selectedMovie?.id}
-          onMovieClick={movieClickHandler}
-          movies={movies}
-        />
+        <SelectedMovieContext.Provider value={{ selectedMovie }}>
+          <MoviesList
+            onMovieClick={movieClickHandler}
+            movies={movies}
+          />
+        </SelectedMovieContext.Provider>
         {selectedMovie && (
           <VideoPlayer url={selectedMovie?.trailer} onClose={onCloseMovie} />
         )}
@@ -52,3 +63,5 @@ const Main = () => {
   );
 };
 export default Main;
+
+
