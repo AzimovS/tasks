@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import MoviesList from "../../components/moviesList/MoviesList";
 import ActorsList from "../../components/actorsList/ActorsList";
 import { movies } from "../../mock";
@@ -6,50 +6,23 @@ import { actors } from "../../mock";
 import { Movie, Actor } from "../../types";
 import "./Main.scss";
 import VideoPlayer from "../../components/videoPlayer/VideoPlayer";
-
-
-export type selectedMovieContext = {
-  selectedMovie: Movie | null;
-};
-
-export const SelectedMovieContext = React.createContext<selectedMovieContext | -1>(-1);
-
+import { MovieContext } from "../../contexts/MovieContext";
 
 const Main = () => {
+  const { movie } = useContext(MovieContext);
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [selectedActor, setSelectedActor] = useState<Actor | null>(null);
-
-
-  const movieClickHandler = (v: Movie) => {
-    setSelectedMovie(v);
-  };
-
-  const onCloseMovie = () => {
-    setSelectedMovie(null);
-  };
 
   const actorClickHandler = (v: Actor) => {
     setSelectedActor(v);
   };
 
-  const onCloseActor = () => {
-    setSelectedActor(null);
-  };
-
-
   return (
     <div className="MainPage">
       <div className="MoviePage">
         <h2 className="header">Movies ({movies.length})</h2>
-        <SelectedMovieContext.Provider value={{ selectedMovie }}>
-          <MoviesList
-            onMovieClick={movieClickHandler}
-            movies={movies}
-          />
-        </SelectedMovieContext.Provider>
-        {selectedMovie && (
-          <VideoPlayer url={selectedMovie?.trailer} onClose={onCloseMovie} />
-        )}
+        <MoviesList movies={movies} />
+        <VideoPlayer url={selectedMovie?.trailer} />
       </div>
       <div className="ActorPage">
         <h2 className="header">Actors({actors.length})</h2>
@@ -63,5 +36,3 @@ const Main = () => {
   );
 };
 export default Main;
-
-

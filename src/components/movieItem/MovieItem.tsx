@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import { Movie } from '../../types';
-import { StyledItemImg, StyledMovieItem } from './MovieItem.styles';
+import React, { useContext, useState } from "react";
+import { MovieContext } from "../../contexts/MovieContext";
+import { Movie } from "../../types";
+import { StyledItemImg, StyledMovieItem } from "./MovieItem.styles";
 
 type Props = {
   movie: Movie;
-  isSelected: boolean;
-  onItemClick: ( v: Movie ) => void;
 };
 
-const MovieItem: React.FC<Props> = ({ movie, isSelected = false, onItemClick }) => {
+const MovieItem: React.FC<Props> = ({ movie }) => {
+  const { changeMovie, movie: selectedMovie } = useContext(MovieContext);
+
   const [state, setState] = useState({
     loading: false,
     addedToWatchLater: false,
@@ -21,17 +22,23 @@ const MovieItem: React.FC<Props> = ({ movie, isSelected = false, onItemClick }) 
     }));
   };
 
+  const onMovieClick = () => {
+    changeMovie(movie);
+  };
+
   return (
-    <StyledMovieItem selected={isSelected}>
-      <div onClick={() => onItemClick(movie)}>
+    <StyledMovieItem
+      selected={!!selectedMovie && movie.id === selectedMovie?.id}
+    >
+      <div onClick={onMovieClick}>
         <StyledItemImg src={movie.image} alt={movie.title} />
         <div>{movie.title}</div>
         <div>{movie.description}</div>
         <div>{movie.duration / 60} hours</div>
-        <button onClick={watchLaterClick}>
-          {state.addedToWatchLater ? 'Added to list' : 'Watch later'}
-        </button>
       </div>
+      <button onClick={watchLaterClick}>
+        {state.addedToWatchLater ? "Added to list" : "Watch later"}
+      </button>
     </StyledMovieItem>
   );
 };

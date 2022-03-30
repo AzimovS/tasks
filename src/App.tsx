@@ -1,11 +1,14 @@
-import React from 'react';
-import Main from './pages/main/Main';
-import './App.css';
+import React from "react";
+import Main from "./pages/main/Main";
+import "./App.css";
+import { MovieProvider } from "./contexts/MovieContext";
 
 function App() {
   return (
     <div className="App">
-      <Main />
+      <MovieProvider>
+        <Main />
+      </MovieProvider>
     </div>
   );
 }
