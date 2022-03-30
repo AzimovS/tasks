@@ -16,3 +16,10 @@ export interface Actor {
   image: string;
   video: string;
 }
+
+export interface User {
+  login: string;
+  firstname: string;
+  lastname: string;
+  avatar: string;
+}

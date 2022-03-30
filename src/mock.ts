@@ -1,5 +1,6 @@
 import { Movie } from './types';
 import { Actor } from './types';
+import { User } from './types';
 
 export const movies: Movie[] = [
   {
@@ -53,5 +54,14 @@ export const actors: Actor[] = [
     age: 65,
     image: 'https://live.staticflickr.com/3700/10278915286_bcb7353093_b.jpg',
     video: 'https://www.youtube.com/watch?v=W56UKCwT2LM'
+  }
+]
+
+export const users: User[] = [
+  {
+    login: "admin",
+    firstname: "admin",
+    lastname: "admin",
+    avatar: "https://pbs.twimg.com/profile_images/1454807122210816000/aGorBtwv_400x400.jpg"
   }
 ]
