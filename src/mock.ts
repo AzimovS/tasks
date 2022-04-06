@@ -29,33 +29,33 @@ export const movies: Movie[] = [
   },
 ];
 
-export const actors: Actor[] = [
-  {
-    id: 1,
-    name: 'Dwayne Johnson',
-    movies: 'Red Notice, Black Adam',
-    age: 49,
-    image: 'https://variety.com/wp-content/uploads/2020/12/Dwayne_Johnson.png?w=970',
-    video: 'https://www.youtube.com/watch?v=W56UKCwT2LM'
-  },
-  {
-    id: 2,
-    name: 'Will Smith',
-    movies: 'Red Notice, Black Adam',
-    age: 49,
-    image: 'https://e7.pngegg.com/pngimages/841/519/png-clipart-will-smith-one-strange-rock-actor-national-geographic-film-producer-will-smith-celebrities-moustache.png',
-    video: 'https://www.youtube.com/watch?v=W56UKCwT2LM'
+// export const actors: Actor[] = [
+//   {
+//     id: 1,
+//     name: 'Dwayne Johnson',
+//     movies: 'Red Notice, Black Adam',
+//     age: 49,
+//     image: 'https://variety.com/wp-content/uploads/2020/12/Dwayne_Johnson.png?w=970',
+//     video: 'https://www.youtube.com/watch?v=W56UKCwT2LM'
+//   },
+//   {
+//     id: 2,
+//     name: 'Will Smith',
+//     movies: 'Red Notice, Black Adam',
+//     age: 49,
+//     image: 'https://e7.pngegg.com/pngimages/841/519/png-clipart-will-smith-one-strange-rock-actor-national-geographic-film-producer-will-smith-celebrities-moustache.png',
+//     video: 'https://www.youtube.com/watch?v=W56UKCwT2LM'
   
-  },
-  {
-    id: 3,
-    name: 'Tom Hanks',
-    movies: 'Forrest Gump, The Green Mile',
-    age: 65,
-    image: 'https://live.staticflickr.com/3700/10278915286_bcb7353093_b.jpg',
-    video: 'https://www.youtube.com/watch?v=W56UKCwT2LM'
-  }
-]
+//   },
+//   {
+//     id: 3,
+//     name: 'Tom Hanks',
+//     movies: 'Forrest Gump, The Green Mile',
+//     age: 65,
+//     image: 'https://live.staticflickr.com/3700/10278915286_bcb7353093_b.jpg',
+//     video: 'https://www.youtube.com/watch?v=W56UKCwT2LM'
+//   }
+// ]
 
 export const users: User[] = [
   {

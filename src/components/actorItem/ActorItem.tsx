@@ -20,11 +20,11 @@ const ActorItem: React.FC<Props> = ({ actor, isSelected, onItemClick }) => {
     <StyledActorItem selected={isSelected}>
       <div onClick={() => onItemClick(actor)}>
 
-        {!isSelected && <StyledItemImg src={actor.image} alt={actor.name} />}
-        {isSelected && <VideoPlayer url={actor.video} replaceImage={replaceImage}/>}
+        {/* {!isSelected && <StyledItemImg src={actor.image_path} alt={actor.name} />}
+        {isSelected && <VideoPlayer url={actor.im} replaceImage={replaceImage}/>} */}
         <div>{actor.name}</div>
-        <div>{actor.movies}</div>
-        <div>{actor.age} y. o.</div>
+        <div>{actor.alternative_name}</div>
+        <div>{actor.rating}</div>
         <button onClick={followClick}>
           {isFollowed ? "Following" : "Follow"}
         </button>

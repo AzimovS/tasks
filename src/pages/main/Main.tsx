@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import MoviesList from "../../components/moviesList/MoviesList";
 import ActorsList from "../../components/actorsList/ActorsList";
-import { actors } from "../../mock";
 import { Movie, Actor } from "../../types";
 import "./Main.scss";
 import VideoPlayer from "../../components/videoPlayer/VideoPlayer";
 import { MovieContext } from "../../contexts/MovieContext";
 import { getMovies } from "../../services/movies";
+import { getActors } from "../../services/actors";
 
 const Main = () => {
   const { movie } = useContext(MovieContext);
@@ -14,10 +14,15 @@ const Main = () => {
   const [selectedActor, setSelectedActor] = useState<Actor | null>(null);
 
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [actors, setActors] = useState<Actor[]>([]);
+
+  const [loadingMovies, setLoadingMovies] = useState(false);
+  const [loadingActors, setLoadingActors] = useState(false);
+
+  const actorPageSize = 3;
 
   useEffect(() => {
-    setLoading(true);
+    setLoadingMovies(true);
     const getData = async () => {
       try {
         const moviesRes = await getMovies(0, 20);
@@ -25,7 +30,22 @@ const Main = () => {
       } catch (e) {
         console.error(e);
       }
-      setLoading(false);
+      setLoadingMovies(false);
+    };
+    getData();
+  }, []);
+
+  useEffect(() => {
+    setLoadingActors(true);
+    const getData = async () => {
+      try {
+        const actorsRes = await getActors(2, actorPageSize);
+        console.log(actorsRes);
+        setActors(actorsRes);
+      } catch (e) {
+        console.error(e);
+      }
+      setLoadingActors(false);
     };
     getData();
   }, []);
@@ -38,20 +58,24 @@ const Main = () => {
     <div className="MainPage">
       <div className="MoviePage">
         <h2 className="header">Movies ({movies.length})</h2>
-         {loading ? (
-           <h3>Loading movies...</h3>
-         ) : (
-           <MoviesList movies={movies} />
-         )}
+        {loadingMovies ? (
+          <h3>Loading movies...</h3>
+        ) : (
+          <MoviesList movies={movies} />
+        )}
         <VideoPlayer url={selectedMovie?.trailer} />
       </div>
       <div className="ActorPage">
         <h2 className="header">Actors({actors.length})</h2>
-        <ActorsList
-          actors={actors}
-          selectedId={selectedActor?.id}
-          onActorClick={actorClickHandler}
-        />
+        {loadingActors ? (
+          <h3>Loading actors...</h3>
+        ) : (
+          <ActorsList
+            actors={actors}
+            selectedId={selectedActor?.objectID}
+            onActorClick={actorClickHandler}
+          />
+        )}
       </div>
     </div>
   );

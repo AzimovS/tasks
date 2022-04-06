@@ -9,12 +9,11 @@ export interface Movie {
 }
 
 export interface Actor {
-  id: number;
+  objectID: string;
   name: string;
-  movies: string;
-  age: number;
-  image: string;
-  video: string;
+  rating: number;
+  image_path: number;
+  alternative_name: string;
 }
 
 export interface User {
