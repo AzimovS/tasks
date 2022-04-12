@@ -44,6 +44,14 @@ const StudentForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
     }
   };
 
+  const deleteCourse = (id: number) => {
+    const newCourses = values.courses?.filter((course, idx) => idx !== id);
+    setValues((v) => ({
+      ...v,
+      courses: newCourses,
+    }));
+  }
+
   const sendForm = () => {
     onSubmit(values);
   };
@@ -86,7 +94,7 @@ const StudentForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
         </div>
         <ul>
           {values.courses?.map((course, idx) => (
-            <li key={`${course}-${idx}`}>{course.name}</li>
+            <li key={`${course}-${idx}`}>{course.name} <button type="button" onClick={() => deleteCourse(idx)}>Delete</button></li>
           ))}
         </ul>
       </div>
