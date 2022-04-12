@@ -5,6 +5,7 @@ import StudentDetails from "./pages/students/details/StudentDetails";
 import StudentsList from "./pages/students/students-list/StudentsList";
 import "./App.css";
 import StudentCreate from "./pages/students/create/StudentCreate";
+import StudentEdit from "./pages/students/edit/StudentEdit";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path={"/students"} element={<StudentsList />} />
           <Route path={"/students/:id"} element={<StudentDetails />} />
           <Route path={"/students/create"} element={<StudentCreate />} />
+          <Route path={'/students/edit/:id'} element={<StudentEdit />} />
         </Routes>
       </div>
     </Router>
