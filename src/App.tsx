@@ -1,22 +1,23 @@
 import React from "react";
-import Main from "./pages/main/Main";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/homepage/HomePage";
+import StudentDetails from "./pages/students/details/StudentDetails";
+import StudentsList from "./pages/students/students-list/StudentsList";
 import "./App.css";
-import { MovieProvider } from "./contexts/MovieContext";
-import NavBar from "./components/navBar/NavBar";
-import { UserContext, UserProvider } from "./contexts/UserContext";
+import StudentCreate from "./pages/students/create/StudentCreate";
 
 function App() {
   return (
-    <div>
-      <UserProvider>
-        <NavBar />
-      </UserProvider>
+    <Router>
       <div className="App">
-        <MovieProvider>
-          <Main />
-        </MovieProvider>
+        <Routes>
+          <Route path={"/"} element={<HomePage />} />
+          <Route path={"/students"} element={<StudentsList />} />
+          <Route path={"/students/:id"} element={<StudentDetails />} />
+          <Route path={"/students/create"} element={<StudentCreate />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
