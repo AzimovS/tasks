@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import StudentForm from '../../../components/student-form/StudentForm';
-import { editStudent, getStudent } from '../../../services/students';
-import { Student } from '../../../types';
+import { useState, useEffect, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import StudentForm from "../../../components/student-form/StudentForm";
+import { StudentContext } from "../../../contexts/StudentContext";
+import { editStudent, getStudent } from "../../../services/students";
+import { Student } from "../../../types";
 
 const StudentEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [student, setStudent] = useState<Student>();
+  const { dispatch } = useContext(StudentContext);
 
   useEffect(() => {
     if (!id) {
@@ -25,6 +27,7 @@ const StudentEdit = () => {
     }
 
     editStudent(id, data).then((res) => {
+      dispatch({ type: "EDIT_STUDENT", payload: "Student was edited!" });
       navigate(`/students/${id}`);
     });
   };
