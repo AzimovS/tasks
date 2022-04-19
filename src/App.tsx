@@ -12,26 +12,32 @@ import FacultyEdit from "./pages/faculties/edit/FacultyEdit";
 import { StudentProvider } from "./contexts/StudentContext";
 import "./App.css";
 import Header from "./components/header/Header";
+import { ToastProvider } from "./contexts/ToastContext";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <Router>
-      <StudentProvider>
-        <div className="App">
-          <Header />
-          <Routes>
-            <Route path={"/"} element={<HomePage />} />
-            <Route path={"/students"} element={<StudentsList />} />
-            <Route path={"/students/:id"} element={<StudentDetails />} />
-            <Route path={"/students/create"} element={<StudentCreate />} />
-            <Route path={"/students/edit/:id"} element={<StudentEdit />} />
-            <Route path={"/faculties"} element={<FacultiesList />} />
-            <Route path={"/faculties/:id"} element={<FacultyDetails />} />
-            <Route path={"/faculties/create"} element={<FacultyCreate />} />
-            <Route path={"/faculties/edit/:id"} element={<FacultyEdit />} />
-          </Routes>
-        </div>
-      </StudentProvider>
+      <ToastProvider>
+        <StudentProvider>
+          <div className="App">
+            <Header />
+            <Routes>
+              <Route path={"/"} element={<HomePage />} />
+              <Route path={"/students"} element={<StudentsList />} />
+              <Route path={"/students/:id"} element={<StudentDetails />} />
+              <Route path={"/students/create"} element={<StudentCreate />} />
+              <Route path={"/students/edit/:id"} element={<StudentEdit />} />
+              <Route path={"/faculties"} element={<FacultiesList />} />
+              <Route path={"/faculties/:id"} element={<FacultyDetails />} />
+              <Route path={"/faculties/create"} element={<FacultyCreate />} />
+              <Route path={"/faculties/edit/:id"} element={<FacultyEdit />} />
+            </Routes>
+          </div>
+        </StudentProvider>
+      </ToastProvider>
     </Router>
   );
 }
