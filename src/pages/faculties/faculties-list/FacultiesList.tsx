@@ -1,15 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContext } from '../../../contexts/ToastContext';
 import { getFaculties } from '../../../services/faculties';
 import { Faculty } from '../../../types';
 
 const FacultiesList = () => {
   const [faculties, setFaculties] = useState<Faculty[]>([]);
+  const { dispatch: toastDispatch } = useContext(ToastContext);
+
 
   useEffect(() => {
     getFaculties().then((res) => {
       setFaculties(res);
-    });
+    }).catch((err) => {
+        toastDispatch({
+          type: "ERROR",
+          payload: { message: err.message || "Could not load faculties" },
+        });
+      });
   }, []);
 
   return (

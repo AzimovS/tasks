@@ -5,6 +5,8 @@ const API_ROOT = 'https://ca-api.witharts.kz';
 
 export const getStudents = () => {
   return axios.get<Student[]>(`${API_ROOT}/students`).then((res) => res.data);
+    // return Promise.reject(new Error("Request failed"));
+
 };
 
 export const getStudent = (id: string) => {

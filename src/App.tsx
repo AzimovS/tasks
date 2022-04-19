@@ -35,6 +35,7 @@ function App() {
               <Route path={"/faculties/create"} element={<FacultyCreate />} />
               <Route path={"/faculties/edit/:id"} element={<FacultyEdit />} />
             </Routes>
+            <ToastContainer />
           </div>
         </StudentProvider>
       </ToastProvider>

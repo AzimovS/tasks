@@ -17,10 +17,10 @@ const StudentsList = () => {
       .catch((err) => {
         toastDispatch({
           type: "ERROR",
-          payload: { message: err.message || "Custom error text" },
+          payload: { message: err.message || "Could not load students" },
         });
       });
-  }, [state]);
+  }, []);
 
   const deleteStudentButton = (id: string) => {
     deleteStudent(id)
@@ -29,11 +29,19 @@ const StudentsList = () => {
         if (res.id) {
           navigate("/students");
         }
+        toastDispatch({
+          type: "SUCCESS",
+          payload: { message: "Student was deleted!" },
+        });
       })
       .catch((err) => {
         dispatch({
           type: "DELETE_STUDENT",
           payload: "Student deletion failed!",
+        });
+        toastDispatch({
+          type: "ERROR",
+          payload: { message: err.message || "Could not delete the student" },
         });
       });
   };
